@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <h2><i class="fas fa-file-invoice-dollar"></i> Liste des crédits</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Date demande</th>
+      <th>Statut</th>
+      <th>Montant</th>
+      <th>Durée (mois)</th>
+      <th>Taux d'intérêt</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let credit of credits$ | async">
+      <td>{{ credit.type }}</td>
+      <td>{{ credit.dateDemande | date:'dd/MM/yyyy' }}</td>
+      <td>{{ credit.statut }}</td>
+      <td>{{ credit.montant | currency:'EUR' }}</td>
+      <td>{{ credit.duree }}</td>
+      <td>{{ credit.tauxInteret }}%</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

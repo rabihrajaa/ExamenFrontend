@@ -1,0 +1,79 @@
+<div class="container mt-3">
+  <h2><i class="fas fa-plus-circle"></i> Ajouter un Crédit</h2>
+  <form [formGroup]="creditForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Date de demande</label>
+      <input type="date" formControlName="dateDemande" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Statut</label>
+      <select formControlName="statut" class="form-select">
+        <option *ngFor="let s of statutOptions" [value]="s">{{ s }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Date d'acceptation</label>
+      <input type="date" formControlName="dateAcception" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Montant</label>
+      <input type="number" formControlName="montant" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Durée (mois)</label>
+      <input type="number" formControlName="duree" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Taux d'intérêt (%)</label>
+      <input type="number" formControlName="tauxInteret" step="0.01" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Type de crédit</label>
+      <select formControlName="type" class="form-select">
+        <option value="">-- Sélectionnez --</option>
+        <option *ngFor="let t of typesCredit" [value]="t">{{ t }}</option>
+      </select>
+    </div>
+
+    <!-- Champs spécifiques -->
+    <div *ngIf="creditForm.get('type')?.value === 'Personnel'">
+      <div class="mb-3">
+        <label>Motif</label>
+        <input type="text" formControlName="motif" class="form-control" />
+      </div>
+    </div>
+
+    <div *ngIf="creditForm.get('type')?.value === 'Immobilier'">
+      <div class="mb-3">
+        <label>Type du bien financé</label>
+        <select formControlName="typeBienFinance" class="form-select">
+          <option value="">-- Sélectionnez --</option>
+          <option>Appartement</option>
+          <option>Maison</option>
+          <option>Local Commercial</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="creditForm.get('type')?.value === 'Professionnel'">
+      <div class="mb-3">
+        <label>Motif</label>
+        <input type="text" formControlName="motif" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label>Raison sociale</label>
+        <input type="text" formControlName="raisonSociale" class="form-control" />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="creditForm.invalid">
+      <i class="fas fa-save"></i> Enregistrer
+    </button>
+  </form>
+</div>

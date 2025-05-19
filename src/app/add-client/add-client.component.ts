@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import {Client, ClientService} from '../services/client.service';
 import {FormsModule} from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-add-client',
   imports: [
-    FormsModule
+    FormsModule,CommonModule
   ],
   templateUrl: './add-client.component.html'
 })

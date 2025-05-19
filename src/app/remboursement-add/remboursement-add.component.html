@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <h2><i class="fas fa-money-check-alt"></i> Ajouter un remboursement</h2>
+  <form [formGroup]="remboursementForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Date du remboursement</label>
+      <input type="date" formControlName="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Montant</label>
+      <input type="number" formControlName="montant" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+      <label>Type</label>
+      <select formControlName="type" class="form-select">
+        <option *ngFor="let t of types" [value]="t">{{ t }}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success" type="submit" [disabled]="remboursementForm.invalid">
+      <i class="fas fa-save"></i> Enregistrer
+    </button>
+  </form>
+</div>

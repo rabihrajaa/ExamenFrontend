@@ -1,0 +1,19 @@
+<div *ngIf="remboursements$ | async as remboursements" class="container mt-3">
+  <h3><i class="fas fa-coins"></i> Remboursements</h3>
+  <table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Montant</th>
+      <th>Type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let remb of remboursements">
+      <td>{{ remb.date | date:'dd/MM/yyyy' }}</td>
+      <td>{{ remb.montant | currency:'EUR' }}</td>
+      <td>{{ remb.type }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
