@@ -10,7 +10,7 @@ export interface Client {
 
 @Injectable({ providedIn: 'root' })
 export class ClientService {
-  private apiUrl = 'http://localhost:8080/api/clients';
+  private apiUrl = 'http://localhost:8086/api/clients';
 
   constructor(private http: HttpClient) {}
 

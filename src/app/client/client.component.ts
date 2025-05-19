@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import {Client, ClientService} from '../services/client.service';
+import { Observable } from 'rxjs';
+import { Client, ClientService } from '../services/client.service';
 
 @Component({
-  selector: 'app-client-list',
+  selector: 'app-client',
   templateUrl: './client-list.component.html'
 })
 export class ClientListComponent implements OnInit {
-  clients: Client[] = [];
+
+  clients!: Observable<Client[]>;
 
   constructor(private clientService: ClientService) {}
 
   ngOnInit(): void {
-    this.clientService.getAll().subscribe(data => this.clients = data);
+    this.clients = this.clientService.getAll();
   }
 }
